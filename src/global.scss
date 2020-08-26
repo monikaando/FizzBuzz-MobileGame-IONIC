@@ -24,3 +24,17 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+:root {
+  --ion-color-primary: #1b71ad;
+  --ion-color-danger: #be5683;
+  --ion-color-warning: #fc9d1f;
+}
+
+ion-app{
+  background-image: url('https://res.cloudinary.com/mokaweb/image/upload/o_16/v1598441067/PXl.WIDGETS/Cactus_Wallpaper_mobile.jpg') !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
+  height: 100% !important;
+}
