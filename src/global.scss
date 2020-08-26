@@ -28,13 +28,36 @@
   --ion-color-primary: #1b71ad;
   --ion-color-danger: #be5683;
   --ion-color-warning: #fc9d1f;
+
+  h1 {
+    font-weight: bold;
+  }
+  .content {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center !important;
+    align-items: center !important;
+    height: 90%;
+  }
+  .m-t-2 {
+    margin-top: 2%;
+  }
+
+  .m-t-10 {
+    margin-top: 10%;
+  }
+
+  .m-t-30 {
+    margin-top: 30%;
+  }
 }
 
 ion-app{
-  background-image: url('https://res.cloudinary.com/mokaweb/image/upload/o_16/v1598441067/PXl.WIDGETS/Cactus_Wallpaper_mobile.jpg') !important;
+  background-image: url('https://res.cloudinary.com/mokaweb/image/upload/o_10/v1598446141/PXl.WIDGETS/Cactus_Wallpaper_mobile.jpg') !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
   background-attachment: fixed !important;
   height: 100% !important;
 }
+
