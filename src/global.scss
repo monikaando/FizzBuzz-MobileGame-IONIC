@@ -25,20 +25,19 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 :root {
+  --ion-background-color: none;
   --ion-color-primary: #1b71ad;
   --ion-color-danger: #be5683;
   --ion-color-warning: #fc9d1f;
-
+  --ion-color-success: #28996c;
+  --ion-offset-top: 20%;
+:host {
+  padding-top:40%;
+}
   h1 {
     font-weight: bold;
   }
-  .content {
-    display: flex !important;
-    flex-direction: column;
-    justify-content: center !important;
-    align-items: center !important;
-    height: 90%;
-  }
+
   .m-t-2 {
     margin-top: 2%;
   }

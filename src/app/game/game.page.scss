@@ -1,0 +1,124 @@
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+
+  //Tooltip
+  /* Tooltip container */
+  .tooltip {
+    position: relative;
+    display: inline-block;
+
+    .tooltip-text {
+      visibility: hidden;
+      width: 330px;
+      background-color: #e3e3e3;
+      color: #404040;
+      line-height: 1.6em;
+      text-align: center;
+      padding: 5px 0;
+      border-radius: 6px;
+
+      /* Position the tooltip text */
+      position: absolute;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin: 2% 0 0 0;
+    }
+  }
+
+
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .tooltip:hover .tooltip-text {
+    visibility: visible;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 6% 0 4% 0;
+  }
+
+  button {
+    cursor: pointer;
+    width: 250px;
+    height: 100px;
+    margin: 0 2%;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 15px;
+    border: 0;
+    outline: none;
+    box-shadow: 12px 21px 17px -2px rgba(209, 209, 209, 0.56);
+  }
+
+  button:active {
+    background-color: darkgrey;
+  }
+  //#resetBtn {
+  //  background-color: #7d7d7d;
+  //  color: white;
+  //  width: 80px;
+  //  height: 23px;
+  //  font-size: 14px;
+  //  margin-top: 1%;
+  //}
+  //#numberBtn {
+  //  background-color: #28996c;
+  //  color: white;
+  //}
+  //
+  //#fizzBtn {
+  //  background-color: #be5683;
+  //  color: white;
+  //}
+  //
+  //#buzzBtn {
+  //  background-color: #fc9d1f;
+  //  color: white;
+  //}
+  //
+  //#fizzBuzzBtn {
+  //  background-color: #1b71ad;
+  //  color: white;
+  //}
+
+  .fizzBuzz {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    //margin-top: 1%;
+
+    h1 {
+      font-size: 6em;
+      margin: 0;
+    }
+  }
+
+  #bt-start {
+    width: 420px;
+    background-color: #d4d4d4;
+    margin: 0;
+  }
+
+  .history {
+    text-align: center;
+    margin: 3% 0;
+
+    table {
+      border-collapse: collapse;
+
+      th, td {
+        width: 150px;
+        text-align: center;
+        padding: 5px
+      }
+    }
+  }
+}

@@ -1,9 +1,12 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>game</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
+<ion-content class="game">
+    <h3>Score: {{score$}}</h3>
+    <ion-toolbar>
+        <ion-buttons slot="center">
+            <ion-button color="light" (click)="stopGame()">Reset</ion-button>
+            <ion-button color="success" #numberButton>Number</ion-button>
+            <ion-button color="danger" #fizzButton>Fizz</ion-button>
+            <ion-button color="warning" #buzzButton>Buzz</ion-button>
+            <ion-button color="primary" #fizzBuzzButton>FizzBuzz</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-content>
