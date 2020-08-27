@@ -9,6 +9,8 @@ import {Input} from "../models/input";
 import {Answer} from "../models/answer";
 import {Results} from "../models/results";
 
+
+
 @Component({
   selector: 'app-game',
   templateUrl: './game.page.html',
