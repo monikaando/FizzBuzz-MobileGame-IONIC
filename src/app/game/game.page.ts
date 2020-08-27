@@ -23,10 +23,10 @@ export class GamePage implements OnInit {
   game$: Subscription;
   public onStartClick = new Subject<boolean>();
   constructor(protected fizzBuzzService: FizzBuzzService) { }
-  @ViewChild('numberButton', {static: true}) numberButton: ElementRef;
-  @ViewChild('fizzButton', {static: true}) fizzButton: ElementRef;
-  @ViewChild('buzzButton', {static: true}) buzzButton: ElementRef;
-  @ViewChild('fizzBuzzButton', {static: true}) fizzBuzzButton: ElementRef;
+  @ViewChild('numberButton', {static: true, read: ElementRef}) numberButton: ElementRef;
+  @ViewChild('fizzButton', {static: true, read: ElementRef}) fizzButton: ElementRef;
+  @ViewChild('buzzButton', {static: true, read: ElementRef}) buzzButton: ElementRef;
+  @ViewChild('fizzBuzzButton', {static: true, read: ElementRef}) fizzBuzzButton: ElementRef;
 
   ngOnInit(): void {
     this.onStartClick.subscribe((response) => {
