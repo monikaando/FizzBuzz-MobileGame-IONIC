@@ -1,12 +1,87 @@
-<ion-content class="game">
-    <h3>Score: {{score$}}</h3>
-    <ion-toolbar>
-        <ion-buttons slot="center">
-            <ion-button color="light" (click)="stopGame()">Reset</ion-button>
-            <ion-button color="success" #numberButton>Number</ion-button>
-            <ion-button color="danger" #fizzButton>Fizz</ion-button>
-            <ion-button color="warning" #buzzButton>Buzz</ion-button>
-            <ion-button color="primary" #fizzBuzzButton>FizzBuzz</ion-button>
-        </ion-buttons>
-    </ion-toolbar>
+<ion-content>
+    <div class="game">
+        <h3>Score: {{score$}}</h3>
+        <ion-text color="primary">
+            <h1>FizzBuzz Game!</h1>
+        </ion-text>
+        <ion-button color="medium" size="small" (click)="stopGame()" class="ion-text-capitalize">Reset</ion-button>
+        <div class="buttons">
+            <ion-button color="danger" size="large" expand="block" class="ion-text-capitalize" #fizzButton>Fizz
+            </ion-button>
+            <ion-button color="warning" size="large" expand="block" class="ion-text-capitalize" #buzzButton>Buzz
+            </ion-button>
+            <ion-button color="primary" size="large" expand="block" class="ion-text-capitalize" #fizzBuzzButton>
+                FizzBuzz
+            </ion-button>
+        </div>
+        <div class="full-width-btn">
+            <ion-button color="success" size="large" expand="block" class="ion-text-capitalize" #numberButton>Number
+            </ion-button>
+        </div>
+        <div class="fizzBuzz" *ngIf="numbers$">
+            <h1>{{numbers$ | async}}</h1>
+        </div>
+        <div *ngIf="!numbers$" class="full-width-btn margin-top-10">
+            <ion-button color="light" size="large" expand="block" (click)="onStartClick.next(true)"
+                        class="ion-text-capitalize">Start
+            </ion-button>
+        </div>
+
+        <ion-grid class="history" *ngIf="numbers$">
+            <ion-row class="bold">
+                <ion-col>
+                    <div>
+                        Answer
+                    </div>
+                </ion-col>
+                <ion-col>
+                    <div>
+                        Solution
+                    </div>
+                </ion-col>
+                <ion-col>
+                    <div>
+                        Score
+                    </div>
+                </ion-col>
+                <ion-col>
+                    <div>
+                        Status
+                    </div>
+                </ion-col>
+            </ion-row>
+
+            <ion-row *ngFor="let answer of answers$ | async">
+                <ion-col>
+                    <div>
+                        {{answer.user}}
+                    </div>
+                </ion-col>
+                <ion-col>
+                    <div>
+                        {{answer.correct}}
+                    </div>
+                </ion-col>
+                <ion-col>
+                    <div>
+                        {{answer.points}}
+                    </div>
+                </ion-col>
+                <ion-col>
+                    <div>
+                        <ng-container
+                                *ngIf="correctAnswer(answer.user,answer.correct)===true; else wrongAnswer">
+                            <img src="https://res.cloudinary.com/mokaweb/image/upload/c_scale,w_15/v1597313914/PXl.WIDGETS/tick.png"
+                                 alt="tick">
+                        </ng-container>
+                        <ng-template #wrongAnswer>
+                            <img src="https://res.cloudinary.com/mokaweb/image/upload/c_scale,w_15/v1597313914/PXl.WIDGETS/cross.png"
+                                 alt="cross">
+                        </ng-template>
+                    </div>
+                </ion-col>
+            </ion-row>
+
+        </ion-grid>
+    </div>
 </ion-content>
