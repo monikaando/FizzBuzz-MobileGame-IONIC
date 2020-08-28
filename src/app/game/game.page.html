@@ -1,6 +1,7 @@
 <ion-content>
     <div class="game">
         <h3>Score: {{score$}}</h3>
+        <div class="lives"><ion-icon name="heart" color="danger"></ion-icon>{{life$ - (wrongAnswer$ | async)}}</div>
         <ion-text color="primary">
             <h1>FizzyBuzz Game!</h1>
         </ion-text>

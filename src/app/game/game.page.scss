@@ -5,6 +5,17 @@
   width: 100%;
   margin-top: 5%;
 
+  .lives{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    ion-icon {
+      margin-right:10px;
+    }
+  }
+
   .buttons {
     display: flex;
     flex-direction: row;
@@ -50,10 +61,11 @@
     width: 98%;
 
 
-      ion-col {
-        text-align: center;
-        padding: 5px;
-      }
+    ion-col {
+      text-align: center;
+      padding: 5px;
+    }
+
     .bold {
       font-weight: bold;
     }
