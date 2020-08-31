@@ -114,11 +114,14 @@ export class GamePage implements OnInit {
     }
 
     reset(): void {
-        if(this.score$===-1){
+        if(this.score$===-1 ){
             alert(`Game Over!, You\'ve got 0 points`);
         }
+        else if (this.score$===1){
+            alert(`Game Over!, You\'ve got 1 point`);
+        }
         else {
-            alert(`Game Over!, You\'ve got ${this.score$} points`);
+            alert(`Game Over! You\'ve got ${this.score$-1} points. Add your selfie to winners!`);
         }
 
         this.stopGame();

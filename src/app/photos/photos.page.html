@@ -2,7 +2,8 @@
   <ion-grid>
     <ion-row>
       <ion-col size="6" *ngFor="let photo of photoService.photos">
-        <img [src]="photo.data" />
+        <img [src]="photo.data" alt="photo"/>
+        <h4>scores here</h4>
       </ion-col>
     </ion-row>
   </ion-grid>

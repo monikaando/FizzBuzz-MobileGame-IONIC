@@ -7,7 +7,8 @@ import { PhotoService } from '../services/photo.service';
   styleUrls: ['./photos.page.scss'],
 })
 export class PhotosPage implements OnInit {
-  constructor(public photoService: PhotoService) { }
+  constructor(public photoService: PhotoService) {
+  }
 
   ngOnInit() {
     this.photoService.loadSaved();
