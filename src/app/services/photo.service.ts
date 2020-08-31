@@ -23,7 +23,7 @@ takePicture() {
 this.camera.getPicture(options).then((imageData) => {
     // Add new photo to gallery
     this.photos.unshift({
-      data: 'data:image/jpeg;base64,' + imageData + this.game.score$
+      data: 'data:image/jpeg;base64,' + imageData
     });
     // Save all photos for later viewing
     this.storage.set('photos', this.photos);
