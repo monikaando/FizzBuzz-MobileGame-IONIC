@@ -116,7 +116,6 @@ export class GamePage implements OnInit {
     reset(): void {
         if(this.score$===-1){
             alert(`Game Over!, You\'ve got 0 points`);
-
         }
         else {
             alert(`Game Over!, You\'ve got ${this.score$} points`);

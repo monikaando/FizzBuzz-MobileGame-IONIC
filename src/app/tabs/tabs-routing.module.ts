@@ -17,6 +17,10 @@ const routes: Routes = [
       },
       {
         path: 'tab3',
+        loadChildren: () => import('../photos/photos.module').then(m => m.PhotosPageModule)
+      },
+      {
+        path: 'tab4',
         loadChildren: () => import('../rules/rules.module').then(m => m.RulesPageModule)
       },
       {
