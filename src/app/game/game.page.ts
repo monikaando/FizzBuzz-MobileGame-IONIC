@@ -17,6 +17,7 @@ import {Results} from "../models/results";
 export class GamePage implements OnInit {
     title = 'FizzyBuzzGame';
     score$ = 0;
+    score = 0;
     life$ = 3;
     numbers$: Observable<number>;
     answers$: Observable<Answer[]>;
@@ -111,6 +112,7 @@ export class GamePage implements OnInit {
             this.score$ = results.score;
         });
 
+
     }
 
     reset(): void {
@@ -123,7 +125,8 @@ export class GamePage implements OnInit {
         else {
             alert(`Game Over! You\'ve got ${this.score$-1} points. Add your selfie to winners!`);
         }
-
+        this.score = this.score$-1;
+        console.log('score!',this.score);
         this.stopGame();
     }
 
