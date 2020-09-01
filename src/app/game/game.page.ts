@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FizzBuzzService} from '../../services/fizzBuzz.service';
-import {map, switchMap, mapTo, first, share, delay, scan} from 'rxjs/operators';
+import {map, switchMap, mapTo, first, share, delay, scan, tap} from 'rxjs/operators';
 import {isNumeric} from 'rxjs/internal-compatibility';
 import {fromEvent, Observable, merge, Subject, zip, Subscription} from 'rxjs';
 import {concat} from 'ramda';
@@ -8,6 +8,7 @@ import {Choice} from "../models/choice";
 import {Input} from "../models/input";
 import {Answer} from "../models/answer";
 import {Results} from "../models/results";
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-game',
@@ -27,7 +28,7 @@ export class GamePage implements OnInit {
     wrongAnswerSub$: Subscription;
     public onStartClick = new Subject<boolean>();
 
-    constructor(protected fizzBuzzService: FizzBuzzService) {
+    constructor(protected fizzBuzzService: FizzBuzzService, private router: Router) {
     }
 
     @ViewChild('numberButton', {static: true, read: ElementRef}) numberButton: ElementRef;
@@ -88,7 +89,9 @@ export class GamePage implements OnInit {
             map(([numb, gameAnswer, userAnswer]) => {
                 return userAnswer && ((userAnswer === gameAnswer) ||
                     (userAnswer == 'Number' && isNumeric(gameAnswer)));
-            }));
+            })
+        );
+
         this.wrongAnswer$ = correctAnswer$.pipe(
             scan((wrong, correct) => {
                 if (!correct) {
@@ -110,7 +113,8 @@ export class GamePage implements OnInit {
 
         this.game$ = fizzBuzzGame$.subscribe((results: Results) => {
             this.score$ = results.score;
-        });
+
+        })
 
 
     }
@@ -127,6 +131,10 @@ export class GamePage implements OnInit {
         }
         this.score = this.score$-1;
         console.log('score!',this.score);
+        if (this.score >= 1) {
+            this.router.navigate(['/highscores'], {replaceUrl: true });
+        }
+
         this.stopGame();
     }
 

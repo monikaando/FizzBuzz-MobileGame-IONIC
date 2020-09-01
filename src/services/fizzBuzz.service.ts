@@ -1,13 +1,18 @@
 import {Injectable} from '@angular/core';
-import {zip, Observable, timer} from 'rxjs';
+import {zip, Observable, timer, BehaviorSubject} from 'rxjs';
 import {map, share} from 'rxjs/operators';
+import {Highscore} from "../app/models/highscore";
+import {Storage} from "@ionic/storage";
+
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class FizzBuzzService {
-  numbers$: Observable<number> = timer(0, 2000).pipe(
+    constructor(public storage: Storage) {
+    }
+  numbers$: Observable<number> = timer(0, 1000).pipe(
     map(n => n += 1),
     share()
   );
@@ -30,5 +35,6 @@ export class FizzBuzzService {
         )
       )
   );
-
+    highscore$ = new BehaviorSubject<number>(0);
+    highscores: Highscore[] = [];
 }

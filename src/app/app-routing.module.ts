@@ -21,6 +21,10 @@ const routes: Routes = [
   {
     path: 'photos',
     loadChildren: () => import('./photos/photos.module').then( m => m.PhotosPageModule)
+  },
+  {
+    path: 'highscores',
+    loadChildren: () => import('./highscores/highscores.module').then( m => m.HighscoresPageModule)
   }
 ];
 @NgModule({
