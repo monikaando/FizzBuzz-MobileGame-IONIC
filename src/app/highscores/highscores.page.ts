@@ -46,11 +46,11 @@ export class HighscoresPage implements OnInit {
 
         this.camera.getPicture(options).then((imageData) => {
             this.image = 'data:image/jpeg;base64,' + imageData;
-            this.photoService.photos.unshift({
-                data: 'data:image/jpeg;base64,' + imageData,
-            });
-            // Save all photos and scores for later viewing
-            this.storage.set('photos', this.photoService.photos);
+            // this.photoService.photos.unshift({
+            //     data: 'data:image/jpeg;base64,' + imageData,
+            // });
+            // // Save all photos and scores for later viewing
+            // this.storage.set('photos', this.photoService.photos);
         }, (err) => {
             // Handle error
             console.log("Camera issue: " + err);
