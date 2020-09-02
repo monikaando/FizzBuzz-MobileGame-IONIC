@@ -124,10 +124,9 @@ export class GamePage implements OnInit {
             alert(`Game Over!, You\'ve got 1 point`);
         }
         else {
-            alert(`Game Over! You\'ve got ${this.score$-1} points. Add your selfie to winners!`);
+            alert(`Game Over! You\'ve got ${this.score$-1} points.`);
         }
         this.score = this.score$-1;
-        console.log('score!',this.score);
         if (this.score >= 1) {
             this.router.navigate(['/highscores'], {replaceUrl: true });
         }

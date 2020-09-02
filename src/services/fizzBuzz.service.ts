@@ -37,4 +37,10 @@ export class FizzBuzzService {
   );
     highscore$ = new BehaviorSubject<number>(0);
     highscores: Highscore[] = [];
+
+    loadSaved() {
+        this.storage.get('highscores').then((highscores) => {
+            this.highscores = highscores || [];
+        });
+    }
 }
