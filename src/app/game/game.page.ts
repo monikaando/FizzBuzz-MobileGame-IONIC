@@ -79,7 +79,7 @@ export class GamePage implements OnInit {
         const score$ = game$.pipe
         (scan((score, [numb, correctAnswer, userAnswer]) =>
             userAnswer && ((isNumeric(correctAnswer) && userAnswer === 'Number') ||
-                (correctAnswer === userAnswer)) ? score + 1 : score - 1, 0)
+                (correctAnswer === userAnswer)) ? score + 1 : score - 1, 0), tap( score => this.fizzBuzzService.highscore$.next(score))
         );
         this.answers$ = zip(game$, score$).pipe
         (scan<[[number, Choice, Input, number[]], number], Answer[]>((answer, [[numb, correct, user], points]) =>
@@ -113,7 +113,6 @@ export class GamePage implements OnInit {
 
         this.game$ = fizzBuzzGame$.subscribe((results: Results) => {
             this.score$ = results.score;
-
         })
 
 

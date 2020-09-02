@@ -1,0 +1,18 @@
+
+h1{
+  margin-bottom: 15%;
+}
+
+.selfie{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  ion-fab-button {
+    margin-top:5%;
+  }
+  ion-button {
+    margin-top:10%;
+    width: 95%
+  }
+}

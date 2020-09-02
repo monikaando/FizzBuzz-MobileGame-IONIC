@@ -1,28 +1,27 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Save your score</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  <form [formGroup]="form" (ngSubmit)="saveHighScore()">
-  <ion-item>
-    <ion-label position="stacked">Your name</ion-label>
-    <ion-input type="text" formControlName="name"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked">Your points: {{highscore}}</ion-label>
-  </ion-item>
-  <ion-note>
-    <h2>Take a selfie!!!</h2>
-  </ion-note>
-  <ion-fab vertical="center" horizontal="center" slot="fixed">
-        <ion-fab-button (click)="takePicture()">
-          <ion-icon name="camera"></ion-icon>
-        </ion-fab-button>
-    <ion-button type="submit">
-        Save
-    </ion-button>
-  </ion-fab>
-  </form>
+<ion-content class="ion-text-center">
+    <ion-text>
+        <h1>Save your High Score</h1>
+    </ion-text>
+    <ion-text>
+        <h2>Your points: {{highScore}}</h2>
+    </ion-text>
+    <form [formGroup]="form" (ngSubmit)="saveHighScore()">
+        <ion-toolbar>
+            <ion-title color="primary">Your name:</ion-title>
+        </ion-toolbar>
+        <ion-item class="ion-text-center">
+            <ion-input type="text" formControlName="name"></ion-input>
+        </ion-item>
+            <ion-text color="danger">
+                <h2>Take a selfie!</h2>
+            </ion-text>
+            <div class="selfie">
+                <ion-fab-button (click)="takePicture()">
+                    <ion-icon name="camera"></ion-icon>
+                </ion-fab-button>
+                <ion-button type="submit" color="danger">
+                    Save
+                </ion-button>
+            </div>
+    </form>
 </ion-content>
