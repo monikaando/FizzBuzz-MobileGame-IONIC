@@ -15,7 +15,7 @@ import {PhotoService} from "../services/photo.service";
 export class HighscoresPage implements OnInit {
     private form: FormGroup;
     highScore: number;
-    image: string
+    image = '../../assets/images/avatar.png'
 
     constructor(
         private camera: Camera,
@@ -32,7 +32,6 @@ export class HighscoresPage implements OnInit {
 
     ngOnInit() {
         this.highScore = this.fizzBuzzService.highscore$.value;
-
     }
 
     takePicture() {
@@ -46,11 +45,11 @@ export class HighscoresPage implements OnInit {
 
         this.camera.getPicture(options).then((imageData) => {
             this.image = 'data:image/jpeg;base64,' + imageData;
-            // this.photoService.photos.unshift({
-            //     data: 'data:image/jpeg;base64,' + imageData,
-            // });
-            // // Save all photos and scores for later viewing
-            // this.storage.set('photos', this.photoService.photos);
+            this.photoService.photos.unshift({
+                data: this.image
+            });
+            // Save all photos for later viewing
+            this.storage.set('photos', this.photoService.photos);
         }, (err) => {
             // Handle error
             console.log("Camera issue: " + err);
@@ -64,7 +63,10 @@ export class HighscoresPage implements OnInit {
             return b.score - a.score;
         });
         this.fizzBuzzService.storage.set('highscores', this.fizzBuzzService.highscores);
-        this.router.navigate(['/photos'], {replaceUrl: true});
+        this.router.navigate(['/tabs/tab3'], { replaceUrl: true });
+    }
+    playAgain() {
+        this.router.navigate(['/tabs/tab2'], { replaceUrl: true });
     }
 }
 

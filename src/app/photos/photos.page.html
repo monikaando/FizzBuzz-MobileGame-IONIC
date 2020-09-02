@@ -1,15 +1,11 @@
 <ion-content>
     <ion-grid>
         <ion-row>
-            <ion-col size="6">
-                <div *ngFor="let item of fizzBuzzService.highscores">
+            <ion-col size="6" *ngFor="let item of fizzBuzzService.highscores">
                     <img [src]="item.photo" alt="photo"/>
-                    <p>{{item.name}}</p>
-                    <p>score:{{item.score}}</p>
-                </div>
-
+                    <h2 class="ion-text-center">{{item.name}}</h2>
+                    <h3 class="ion-text-center">score: {{item.score}}</h3>
             </ion-col>
-
         </ion-row>
     </ion-grid>
 </ion-content>

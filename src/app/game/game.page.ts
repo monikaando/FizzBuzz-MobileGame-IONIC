@@ -114,8 +114,6 @@ export class GamePage implements OnInit {
         this.game$ = fizzBuzzGame$.subscribe((results: Results) => {
             this.score$ = results.score;
         })
-
-
     }
 
     reset(): void {

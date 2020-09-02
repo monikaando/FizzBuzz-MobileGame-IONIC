@@ -8,6 +8,7 @@ import {Storage} from '@ionic/storage';
 export class PhotoService {
     photo: any;
     public photos: Photo[] = [];
+    public highScore: HighScore[] = [];
 
 
     constructor(private camera: Camera,
@@ -41,10 +42,19 @@ export class PhotoService {
     loadSaved() {
         this.storage.get('photos').then((photos) => {
             this.photos = photos || [];
+            console.log('PHOTOS',this.photos)
+        });
+        this.storage.get('highScore').then((highScore) => {
+            this.highScore = highScore || [];
+            console.log('highScore',this.highScore)
         });
     }
+
 }
 
 class Photo {
+    data: any;
+}
+class HighScore {
     data: any;
 }
