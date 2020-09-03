@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FizzBuzzService} from "../../services/fizzBuzz.service";
-import {Router} from "@angular/router";
+import {FizzBuzzService} from '../../services/fizzBuzz.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-photos',
@@ -19,9 +19,9 @@ export class PhotosPage implements OnInit {
 
     clearStorage() {
         this.fizzBuzzService.storage.clear().then(r =>
-            this.fizzBuzzService.highscores=[]
+            this.fizzBuzzService.highscores = []
         );
         this.router.navigate(['/tabs/tab3'], {replaceUrl: true});
-        alert('Wall of fame erased!')
+        alert('Wall of fame erased!');
     }
 }

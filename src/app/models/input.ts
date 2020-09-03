@@ -1,3 +1,3 @@
-import {Choice} from "./choice";
+import {Choice} from './choice';
 
 export type Input = Choice | null;

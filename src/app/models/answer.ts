@@ -1,5 +1,5 @@
-import {Choice} from "./choice";
-import {Input} from "./input";
+import {Choice} from './choice';
+import {Input} from './input';
 
 export interface Answer {
   numb: number;

@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FizzBuzzService} from '../../services/fizzBuzz.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {Router} from "@angular/router";
-import {Camera, CameraOptions} from "@ionic-native/camera/ngx";
-
+import {Router} from '@angular/router';
+import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
 
 @Component({
     selector: 'app-highscores',
@@ -13,14 +12,13 @@ import {Camera, CameraOptions} from "@ionic-native/camera/ngx";
 export class HighscoresPage implements OnInit {
     private form: FormGroup;
     highScore: number;
-    image = '../../assets/images/avatar.png'
+    image = '../../assets/images/avatar.png';
 
     constructor(
         private camera: Camera,
         private fizzBuzzService: FizzBuzzService,
         private formBuilder: FormBuilder,
         private router: Router,
-
     ) {
         this.form = this.formBuilder.group({
             name: [''],
@@ -43,7 +41,7 @@ export class HighscoresPage implements OnInit {
         this.camera.getPicture(options).then((imageData) => {
             this.image = 'data:image/jpeg;base64,' + imageData;
         }, (err) => {
-            console.log("Camera issue: " + err);
+            console.log('Camera issue: ' + err);
         });
     }
 
@@ -52,7 +50,7 @@ export class HighscoresPage implements OnInit {
         this.fizzBuzzService.highscores.sort((a, b) => {
             return b.score - a.score;
         });
-        this.fizzBuzzService.storage.set('highscores', this.fizzBuzzService.highscores)
+        this.fizzBuzzService.storage.set('highscores', this.fizzBuzzService.highscores);
         this.router.navigate(['/tabs/tab3'], {replaceUrl: true});
     }
 

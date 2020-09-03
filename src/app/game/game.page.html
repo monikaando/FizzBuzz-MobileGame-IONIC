@@ -1,7 +1,9 @@
 <ion-content>
     <div class="game">
         <h3>Score: {{score$}}</h3>
-        <div class="lives"><ion-icon name="heart" color="danger"></ion-icon>{{life$ - (wrongAnswer$ | async)}}</div>
+        <div class="lives">
+            <ion-icon name="heart" color="danger"></ion-icon>
+            {{life$ - (wrongAnswer$ | async)}}</div>
         <ion-text color="primary">
             <h1>FizzyBuzz Game!</h1>
         </ion-text>
@@ -28,7 +30,7 @@
             </ion-button>
         </div>
 
-        <ion-grid class="history" *ngIf="numbers$">
+        <ion-grid class="history" *ngIf="numbers$ | async; else instructions">
             <ion-row class="bold">
                 <ion-col>
                     <div>
@@ -64,9 +66,12 @@
                     </div>
                 </ion-col>
                 <ion-col>
-                    <div>
+                    <div *ngIf="answer.points >= 0; else zero">
                         {{answer.points}}
                     </div>
+                    <ng-template #zero>
+                        0
+                    </ng-template>
                 </ion-col>
                 <ion-col>
                     <div>
@@ -82,7 +87,17 @@
                     </div>
                 </ion-col>
             </ion-row>
-
         </ion-grid>
+        <ng-template #instructions>
+            <div *ngIf="numbers$; else empty" class="ion-text-center instructions">
+                <h4>Short instructions:</h4>
+                <p>Number = <b>Number</b></p>
+                <p>Number / 3 = <b>Fizz</b></p>
+                <p>Number / 5 = <b>Buzz</b></p>
+                <p>Number / 3 and / 5 = <b>FizzBuzz</b></p>
+            </div>
+            <ng-template #empty>
+            </ng-template>
+        </ng-template>
     </div>
 </ion-content>

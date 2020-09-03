@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import {FizzBuzzService} from "./fizzBuzz.service";
+import {FizzBuzzService} from './fizzBuzz.service';
 
 
 describe('FizzBuzzService', () => {

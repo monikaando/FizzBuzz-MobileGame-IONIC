@@ -4,10 +4,10 @@ import {map, switchMap, mapTo, first, share, delay, scan, tap} from 'rxjs/operat
 import {isNumeric} from 'rxjs/internal-compatibility';
 import {fromEvent, Observable, merge, Subject, zip, Subscription} from 'rxjs';
 import {concat} from 'ramda';
-import {Choice} from "../models/choice";
-import {Input} from "../models/input";
-import {Answer} from "../models/answer";
-import {Results} from "../models/results";
+import {Choice} from '../models/choice';
+import {Input} from '../models/input';
+import {Answer} from '../models/answer';
+import {Results} from '../models/results';
 import {Router} from '@angular/router';
 
 @Component({
@@ -18,14 +18,13 @@ import {Router} from '@angular/router';
 export class GamePage implements OnInit {
     title = 'FizzyBuzzGame';
     score$ = 0;
-    score = 0;
     life$ = 3;
     numbers$: Observable<number>;
-    answers$: Observable<Answer[]>;
     numbersSub$: Subscription;
-    game$: Subscription;
+    answers$: Observable<Answer[]>;
     wrongAnswer$: Observable<number>;
     wrongAnswerSub$: Subscription;
+    game$: Subscription;
     public onStartClick = new Subject<boolean>();
 
     constructor(protected fizzBuzzService: FizzBuzzService, private router: Router) {
@@ -42,7 +41,7 @@ export class GamePage implements OnInit {
             this.playGame();
             this.numbers$ = this.fizzBuzzService.numbers$;
             this.numbersSub$ = this.numbers$.subscribe(val => {
-                return val
+                return val;
             });
         });
     }
@@ -79,8 +78,9 @@ export class GamePage implements OnInit {
         const score$ = game$.pipe
         (scan((score, [numb, correctAnswer, userAnswer]) =>
             userAnswer && ((isNumeric(correctAnswer) && userAnswer === 'Number') ||
-                (correctAnswer === userAnswer)) ? score + 1 : score - 1, 0), tap( score => this.fizzBuzzService.highscore$.next(score))
+                (correctAnswer === userAnswer)) ? score + 1 : score - 1, 0), tap(score => this.fizzBuzzService.highscore$.next(score))
         );
+
         this.answers$ = zip(game$, score$).pipe
         (scan<[[number, Choice, Input, number[]], number], Answer[]>((answer, [[numb, correct, user], points]) =>
             concat([{numb, correct, user, points}], answer), []));
@@ -88,7 +88,7 @@ export class GamePage implements OnInit {
         const correctAnswer$: Observable<boolean> = game$.pipe(
             map(([numb, gameAnswer, userAnswer]) => {
                 return userAnswer && ((userAnswer === gameAnswer) ||
-                    (userAnswer == 'Number' && isNumeric(gameAnswer)));
+                    (userAnswer === 'Number' && isNumeric(gameAnswer)));
             })
         );
 
@@ -99,13 +99,15 @@ export class GamePage implements OnInit {
                 }
                 return wrong;
             }, 0)
-        )
+        );
         this.wrongAnswerSub$ = this.wrongAnswer$
             .subscribe((wrongAnswer) => {
                 if (wrongAnswer >= this.life$ || this.score$ < 0) {
-                    this.reset();
+                    setTimeout(() => {
+                        this.reset();
+                    }, 1900);
                 }
-            })
+            });
         const fizzBuzzGame$ = zip<[number, Answer[]]>(score$, this.answers$).pipe(
             map(([score, answer]) => ({score, answer} as Results)
             )
@@ -113,24 +115,20 @@ export class GamePage implements OnInit {
 
         this.game$ = fizzBuzzGame$.subscribe((results: Results) => {
             this.score$ = results.score;
-        })
+            if (this.score$ < 0) {
+                this.score$ = 0;
+            }
+            if (this.life$ < 0) {
+                this.life$ = 0;
+            }
+        });
     }
 
     reset(): void {
-        if(this.score$===-1 ){
-            alert(`Game Over!, You\'ve got 0 points`);
+        alert(`Game Over!  You\'ve got ${this.score$} points.`);
+        if (this.score$ >= 3) {
+            this.router.navigate(['/highscores'], {replaceUrl: true});
         }
-        else if (this.score$===1){
-            alert(`Game Over!, You\'ve got 1 point`);
-        }
-        else {
-            alert(`Game Over! You\'ve got ${this.score$-1} points.`);
-        }
-        this.score = this.score$-1;
-        if (this.score >= 1) {
-            this.router.navigate(['/highscores'], {replaceUrl: true });
-        }
-
         this.stopGame();
     }
 
@@ -147,6 +145,6 @@ export class GamePage implements OnInit {
 
     correctAnswer(userAnswer, gameAnswer): boolean {
         return userAnswer && ((userAnswer === gameAnswer) ||
-            (userAnswer == 'Number' && isNumeric(gameAnswer)));
+            (userAnswer === 'Number' && isNumeric(gameAnswer)));
     }
 }

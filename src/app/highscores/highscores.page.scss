@@ -1,17 +1,23 @@
-h1 {
-  margin: 10% 0 15% 0;
-}
+ion-content {
+  --background: #ccc url('https://res.cloudinary.com/mokaweb/image/upload/o_17/v1598541283/PXl.WIDGETS/Wallpaper-MuffinMani_Confetti_1-5_1_ei8cp2.jpg') no-repeat center center / cover;
 
-.selfie{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  ion-fab-button {
-    margin-top:5%;
+  h1 {
+    margin: 10% 0 15% 0;
   }
-  ion-button {
-    margin-top:10%;
-    width: 95%
+
+  .selfie {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    ion-fab-button {
+      margin-top: 5%;
+    }
+
+    ion-button {
+      margin-top: 10%;
+      width: 95%
+    }
   }
 }
