@@ -17,7 +17,7 @@ Sometimes when I upload a game to IOS it won't save the first picture immediatel
 ## What issues did you run into and how did you solve them?
 ### Issue: I was testing the app with my friends, 98% of them didn't want to read the instructions.
 
-I provided the most important rules right before game will start.
+I provided the most important rules right before game start.
 ### Issue: In the end of building application the simulator for android updated. I had problem with the simulator from the beginning (didn't read the whole page) but after was even worse(randomly appearing errors: double screen, super slow work, crashing, showing the half of the screen, after a time it didn't create a gallery of pictures anymore, and I didn't change anything in the code.)
 
 I was checking both systems in the Xcode simulator in the same time (android and IOS) + IOS on my iphone. Testing with IOS went fine, the same effect as with Android before updating the simulator. Unfortunately I have no Android phone to test.
